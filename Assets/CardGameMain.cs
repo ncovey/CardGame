@@ -48,6 +48,7 @@ namespace CardGame
 				Destroy(obj);
 
 			}
+
 			if (Input.GetKeyUp(KeyCode.Mouse1))
 			{
 				RebuildDeck();

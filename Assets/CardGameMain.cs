@@ -29,7 +29,7 @@ namespace CardGame
 		// Update is called once per frame
 		void Update () 
 		{
-			if (Input.GetKey(KeyCode.Mouse0) && m_DeckOfCards.Count > 0)
+			if (Input.GetKeyUp(KeyCode.Mouse0) && m_DeckOfCards.Count > 0)
 			{
 				var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 				int idx = Random.Range (0, m_DeckOfCards.Count);
@@ -37,7 +37,8 @@ namespace CardGame
 				GameObject obj = new GameObject();
 				m_CardObjects.Add(obj.AddComponent<CardObject>());
 				m_CardObjects[m_CardObjects.Count-1].gameObject = (GameObject)(Instantiate(Resources.Load<GameObject>("Card")));
-				m_CardObjects[m_CardObjects.Count-1].cardReference = m_DeckOfCards[idx];
+                m_CardObjects[m_CardObjects.Count - 1].gameObject.AddComponent<CardObject>();
+                m_CardObjects[m_CardObjects.Count-1].cardReference = m_DeckOfCards[idx];
 
 				m_CardObjects[m_CardObjects.Count-1].SetSuitValue( (Card.eSuit) Random.Range (1, 5), (Card.eValue) Random.Range (1, 14) );
 				m_CardObjects[m_CardObjects.Count-1].Position = new Vector2(pos.x, pos.y);

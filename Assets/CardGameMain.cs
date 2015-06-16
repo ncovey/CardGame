@@ -14,6 +14,7 @@ namespace CardGame
 		//protected CardObject m_cardObj;
 		protected int m_numCards = 0;
 		//protected GameObject m_gameObj;
+		protected CardGameManager m_cardgameMan = new CardGameManager(4); // 4 players
 
 		// Use this for initialization
 
@@ -23,6 +24,8 @@ namespace CardGame
 			m_CardObjects = new List<CardObject>();
 
 			RebuildDeck();
+
+
 
 		}
 		

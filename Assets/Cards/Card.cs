@@ -46,7 +46,7 @@ namespace CardGame
 
 		protected eSuit m_Suit = eSuit.kNone;
 		protected eValue m_Value = eValue.kNone;
-		protected string m_name;
+		protected string m_name = "";
 
 		#endregion data_members
 
@@ -54,20 +54,27 @@ namespace CardGame
 
 		public eSuit Suit {  
 			get { return m_Suit; }
-			set {
+			set 
+			{
 				m_Suit = value;
+				m_name = GetName(m_Suit, m_Value);
 			}
 
 		}
 		public eValue Value	
 		{ 
 			get { return m_Value; }
-			set {
+			set 
+			{
 				m_Value = value;
+				m_name = GetName(m_Suit, m_Value);
 			}
 		}
 
-		public string name { get { return m_name; } set { m_name = value; } }
+		public string name 
+		{ 
+			get { return m_name; } 
+		}
 
 		#endregion properties
 
@@ -77,11 +84,85 @@ namespace CardGame
 
 		}
 
+		public Card(eSuit suit, eValue val)
+		{
+			m_Suit = suit;
+			m_Value = val;
+			m_name = GetName(m_Suit, m_Value);
+		}
+
 		#endregion ctor
 
 		#region methods
 
+		public static string GetName(eSuit suit, eValue val)
+		{
+			string svalue = "";
+			string ssuit = "";
+			
+			switch (val) {
+			case Card.eValue.kAce:
+				svalue += "ace";
+				break;
+			case Card.eValue.kTwo:
+				svalue += "2";
+				break;
+			case Card.eValue.kThree:
+				svalue += "3";
+				break;
+			case Card.eValue.kFour:
+				svalue += "4";
+				break;
+			case Card.eValue.kFive:
+				svalue += "5";
+				break;
+			case Card.eValue.kSix:
+				svalue += "6";
+				break;
+			case Card.eValue.kSeven:
+				svalue += "7";
+				break;
+			case Card.eValue.kEight:
+				svalue += "8";
+				break;
+			case Card.eValue.kNine:
+				svalue += "9";
+				break;
+			case Card.eValue.kTen:
+				svalue += "10";
+				break;
+			case Card.eValue.kJack:
+				svalue += "jack";
+				break;
+			case Card.eValue.kQueen:
+				svalue += "queen";
+				break;
+			case Card.eValue.kKing:
+				svalue += "king";
+				break;
+			default:
+				return "";
+			}
+			
+			switch (suit) {
+			case Card.eSuit.kSpades:
+				ssuit += "spades";
+				break;
+			case Card.eSuit.kHearts:
+				ssuit += "hearts";
+				break;
+			case Card.eSuit.kDiamonds:
+				ssuit += "diamonds";
+				break;
+			case Card.eSuit.kClubs:
+				ssuit += "clubs";
+				break;
+			default:
+				return "";
+			}
 
+			return svalue + " of " + ssuit;
+		}
 
 		#endregion methods
 

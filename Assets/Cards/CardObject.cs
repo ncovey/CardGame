@@ -62,74 +62,8 @@ namespace CardGame
 		
 		protected string SetTexture() {
 			
-			string texture_name = "";
-			string svalue = "";
-			string ssuit = "";
-			m_card.name = "";
-			
-			switch (m_card.Value) {
-			case Card.eValue.kAce:
-				svalue += "ace";
-				break;
-			case Card.eValue.kTwo:
-				svalue += "2";
-				break;
-			case Card.eValue.kThree:
-				svalue += "3";
-				break;
-			case Card.eValue.kFour:
-				svalue += "4";
-				break;
-			case Card.eValue.kFive:
-				svalue += "5";
-				break;
-			case Card.eValue.kSix:
-				svalue += "6";
-				break;
-			case Card.eValue.kSeven:
-				svalue += "7";
-				break;
-			case Card.eValue.kEight:
-				svalue += "8";
-				break;
-			case Card.eValue.kNine:
-				svalue += "9";
-				break;
-			case Card.eValue.kTen:
-				svalue += "10";
-				break;
-			case Card.eValue.kJack:
-				svalue += "jack";
-				break;
-			case Card.eValue.kQueen:
-				svalue += "queen";
-				break;
-			case Card.eValue.kKing:
-				svalue += "king";
-				break;
-			default:
-				return "";
-			}
-			
-			switch (m_card.Suit) {
-			case Card.eSuit.kSpades:
-				ssuit += "spades";
-				break;
-			case Card.eSuit.kHearts:
-				ssuit += "hearts";
-				break;
-			case Card.eSuit.kDiamonds:
-				ssuit += "diamonds";
-				break;
-			case Card.eSuit.kClubs:
-				ssuit += "clubs";
-				break;
-			default:
-				return "";
-			}
-			
-			m_card.name = svalue + " of " + ssuit;
-			texture_name = svalue + "_of_" + ssuit;
+			string texture_name = Card.GetName(m_card.Suit, m_card.Value);
+			texture_name.Replace(" ", "_");
 			
 			Renderer rend = gameObject.GetComponent<Renderer>();
 			rend.material.SetTexture("_MainTex", (Texture)Resources.Load (texture_name));

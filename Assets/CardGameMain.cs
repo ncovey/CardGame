@@ -40,10 +40,10 @@ namespace CardGame
 				GameObject obj = new GameObject();
 				m_CardObjects.Add(obj.AddComponent<CardObject>());
 				m_CardObjects[m_CardObjects.Count-1].gameObject = (GameObject)(Instantiate(Resources.Load<GameObject>("Card")));
-                m_CardObjects[m_CardObjects.Count - 1].gameObject.AddComponent<CardObject>();
+                m_CardObjects[m_CardObjects.Count-1].gameObject.AddComponent<CardObject>();
                 m_CardObjects[m_CardObjects.Count-1].cardReference = m_DeckOfCards[idx];
 
-				m_CardObjects[m_CardObjects.Count-1].SetSuitValue( (Card.eSuit) Random.Range (1, 5), (Card.eValue) Random.Range (1, 14) );
+				m_CardObjects[m_CardObjects.Count-1].SetSuitAndValue( (Card.eSuit) Random.Range (1, 5), (Card.eValue) Random.Range (1, 14) );
 				m_CardObjects[m_CardObjects.Count-1].Position = new Vector2(pos.x, pos.y);
 
 				m_CardObjects[m_CardObjects.Count-1].gameObject.gameObject.GetComponent<Renderer>().sortingOrder = (int)(m_numCards - m_DeckOfCards.Count);

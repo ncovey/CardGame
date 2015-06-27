@@ -15,8 +15,10 @@ namespace CardGame
 {
 	public class Player
 	{
-		PlayerHand m_hand = new PlayerHand();
-		bool m_isFinished = false;
+		public enum ePlayerType { kNone = -1, kHuman = 0, kCPU = 1 };
+		protected PlayerHand m_hand = new PlayerHand();
+		protected ePlayerType m_playerType = ePlayerType.kNone;
+		protected bool m_isFinished = false;
 
 		public bool isFinished
 		{
@@ -30,8 +32,9 @@ namespace CardGame
 			set { m_hand = value; }
 		}
 
-		public Player ()
+		public Player (ePlayerType typeOfPlayer)
 		{
+			m_playerType = typeOfPlayer;
 		}
 	}
 }

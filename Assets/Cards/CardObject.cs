@@ -71,7 +71,7 @@ namespace CardGame
 		}
 
 		
-		public void SetSuitValue(Card.eSuit suit, Card.eValue val)
+		public void SetSuitAndValue(Card.eSuit suit, Card.eValue val)
 		{
 			m_card.Suit = suit;
 			m_card.Value = val;
